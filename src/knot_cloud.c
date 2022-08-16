@@ -66,7 +66,7 @@ static void knot_cloud_msg_destroy(struct knot_cloud_msg *msg)
 		l_queue_destroy(msg->list, l_free);
 	else if (msg->type == LIST_MSG)
 		l_queue_destroy(msg->list, knot_cloud_device_free);
-	if (msg->token) {
+	if (msg->type == REGISTER_MSG) {
 		l_free(msg->token);
 		msg->token = NULL;
 	}
